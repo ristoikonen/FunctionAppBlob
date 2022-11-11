@@ -17,7 +17,7 @@ namespace FunctionApp1
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP trigger function processing a request.");
 
             string name = req.Query["name"];
 
@@ -28,6 +28,8 @@ namespace FunctionApp1
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
                 : $"Hello, {name}. This HTTP triggered function executed successfully.";
+
+            log.LogInformation("C# HTTP trigger function processed a request. \" + responseMessage");
 
             return new OkObjectResult(responseMessage);
         }
